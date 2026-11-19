@@ -178,7 +178,9 @@ Each archive item represents a moment in cultural history that deserves preserva
 
 Created by **Richard John Murray** (`JupiterIsland`).
 
-Archive Signal was created from a lifelong interest in music history, broadcast culture, and the recordings that risk being forgotten. It combines decades of independent music archiving with a commitment to ensuring that culturally significant recordings remain discoverable for future generations.
+Archive Signal was created from a lifelong interest in music history, broadcast culture, and the recordings that risk being forgotten — building on 20+ years of independent UK archiving, including:
+* **[Live Music & Band Documentaries (@RJMmedia-uk)](https://www.youtube.com/@RJMmedia-uk)** — ~1,000,000 views & 72,000+ watch hours preserving rare documentaries (including the 1997 Peter Green documentary) and live performances.
+* **[www.pauldraper-music.co.uk (Wayback 2003–2012)](https://web.archive.org/web/20120320032158/http://www.pauldraper-music.co.uk/home.html)** — long-running Mansun & Paul Draper community archive started in 2003.
 
 > *Preservation is not just about saving media. It's about preserving the stories attached to it.*
 
