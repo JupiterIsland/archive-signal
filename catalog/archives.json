@@ -1,0 +1,315 @@
+{
+  "schema_version": "1.1.0",
+  "archive_name": "Archive Signal",
+  "tagline": "Every recording has a history. Archive Signal keeps it alive.",
+  "era_focus": "1980s & 1990s",
+  "curator": "Richard John Murray (JupiterIsland)",
+  "updated_at": "2026-11-19",
+  "entries": [
+    {
+      "id": "as-1982-rad-001",
+      "catalog_ref": "AS-82-RAD-001",
+      "title": "Late-Night Post-Punk Studio Session — Complete 4-Track Off-Air FM Master",
+      "date": "1982-11-18",
+      "year": 1982,
+      "era": "1980s",
+      "category": "Radio Archives",
+      "source": "BBC Radio 1 FM Stereo Broadcast — Maida Vale Studio 4, London, UK",
+      "original_format": "Maxell XLII-90 High-Bias Chrome Cassette (First-Generation Direct FM Tuner Capture)",
+      "transfer_chain": "Nakamichi Dragon (auto-azimuth calibrated) -> RME Fireface UCX II (24-bit / 96 kHz WAV) -> Gentle 19 kHz FM Pilot Notch",
+      "technical_metadata": {
+        "duration": "18:54",
+        "format_spec": "24-bit / 96 kHz Stereo PCM (FLAC Archival Master)",
+        "preservation_grade": "A Broadcast",
+        "checksum_sha256": "sha256:9f84b2c1e07a3d418c5f021a7749bc0d",
+        "version_history": "v1.0 Raw Capture (2024-03) -> v1.1 Azimuth & 50 Hz Hum Restored (2026-11)"
+      },
+      "restoration_notes": "Calibrated playback head azimuth specifically for the 1982 Nakamichi recording deck. Removed 50 Hz UK mains hum and subtle 19 kHz FM stereo pilot bleed while keeping original broadcast limiter breathing and presenter links intact.",
+      "why_it_matters": "Captures an unissued early-80s UK post-punk studio session recorded months before the band's debut LP—surviving only because a listener pressed record on a chrome cassette.",
+      "historical_context": "Late-night BBC Radio 1 specialist sessions in the early 1980s acted as the real laboratory of British independent music. Commercial albums were often polished months later; these four-track evening transmissions preserve the raw guitar textures, drum-machine experiments, and original presenter introductions exactly as listeners heard them across Britain on a winter Thursday night.",
+      "related_media": [
+        {
+          "ref": "AS-88-DOC-003",
+          "title": "Northern Signals: Independent Studios, Tape Craft & Post-Punk Visuals",
+          "note": "Explores the recording desks and visual culture surrounding this exact 1980s UK scene."
+        },
+        {
+          "ref": "AS-94-RAD-005",
+          "title": "Evening Session Live Broadcast — Four-Song Studio Transmission",
+          "note": "A decade later in the same Maida Vale radio session lineage."
+        }
+      ],
+      "references": [
+        "BBC Radio 1 Transmission Log — Week 46, November 1982",
+        "Private UK Off-Air Cassette Collection (Carlisle / Cumbria Archive Box 04)"
+      ],
+      "tags": ["1980s", "bbc-radio", "post-punk", "chrome-cassette", "maida-vale"],
+      "status": "Verified Transfer"
+    },
+    {
+      "id": "as-1985-tv-002",
+      "catalog_ref": "AS-85-TV-002",
+      "title": "Friday Night Live Television Music Special & Backstage Profile",
+      "date": "1985-03-08",
+      "year": 1985,
+      "era": "1980s",
+      "category": "Television Broadcasts",
+      "source": "Channel 4 / Tyne Tees Television — UK PAL Terrestrial Broadcast",
+      "original_format": "Sony Betamax L-750 Hi-Fi PAL Tape (First-Generation Off-Air Recording)",
+      "transfer_chain": "Sony SL-HF950 PAL Betamax -> Snell & Wilcox TBS185 TBC -> Blackmagic 10-bit 4:2:2 -> QTGMC 50p Deinterlace",
+      "technical_metadata": {
+        "duration": "24:16",
+        "format_spec": "720x576 PAL 50p (FFV1 Lossless MKV + Hi-Fi AFM Stereo Audio)",
+        "preservation_grade": "A- Off-Air",
+        "checksum_sha256": "sha256:4a1e770c912d84f0e3a21b9d6c04f18e",
+        "version_history": "v1.0 Betamax Line-TBC Ingest -> v1.2 Chroma Shift & Frame-Sync Master"
+      },
+      "restoration_notes": "Preserved full 50 fields-per-second PAL live television fluidity via motion-compensated deinterlacing. Corrected slight Betamax Y/C chroma delay (+1.5px) and retained original Hi-Fi AFM stereo soundtrack without artificial noise reduction.",
+      "why_it_matters": "Mid-80s live UK youth music television rarely survived network tape wiping in complete broadcast form—this Betamax keeps the continuity announcements, raw soundcheck clips, and unedited live studio mix.",
+      "historical_context": "Before 24-hour music channels and streaming archives, Friday evening terrestrial broadcasts from Newcastle and Manchester were national cultural events. Because home viewers taped them onto Betamax and VHS in real time, domestic off-air recordings are often the sole surviving witnesses to live performances whose master transmission tapes were recycled or tied up in complex music-licensing vaults.",
+      "related_media": [
+        {
+          "ref": "AS-98-TV-007",
+          "title": "Channel 4 Late-Night Live Performance & Backstage Rehearsal Reel",
+          "note": "Thirteen years later: the late-90s successor to Britain's live-in-studio TV broadcast tradition."
+        }
+      ],
+      "references": [
+        "Channel 4 Broadcast Schedule — Friday 8 March 1985 (18:30 GMT)",
+        "PAL Betamax Off-Air Lineage Sheet — Transfer Log #85-B02"
+      ],
+      "tags": ["1980s", "betamax", "channel-4", "tyne-tees", "pal-broadcast"],
+      "status": "Restored 50p Master"
+    },
+    {
+      "id": "as-1988-doc-003",
+      "catalog_ref": "AS-88-DOC-003",
+      "title": "Northern Signals: Independent Studios, Tape Craft & Post-Punk Visuals",
+      "date": "1988-10-21",
+      "year": 1988,
+      "era": "1980s",
+      "category": "Documentary Archives",
+      "source": "Granada Regional Arts Broadcast — Manchester / North-West UK",
+      "original_format": "U-Matic 3/4-Inch Low-Band Broadcast Cassette (KCA-60)",
+      "transfer_chain": "Sony BVU-950P -> Standalone Frame Synchronizer -> Uncompressed 10-bit PAL SDI -> FFV1 Archival Master",
+      "technical_metadata": {
+        "duration": "28:40",
+        "format_spec": "720x576 PAL 10-bit 4:2:2 / 48 kHz 24-bit Broadcast Audio",
+        "preservation_grade": "A+ Master",
+        "checksum_sha256": "sha256:d3b91f44a8c72e1109ab76e55c2f3a81",
+        "version_history": "v1.0 Tape Bake & SDI Capture -> v1.1 Rec.601 Color-Bar Calibration"
+      },
+      "restoration_notes": "Baked U-Matic cassette for 4 hours at 50 C prior to playback to arrest sticky-shed binder degradation. Used the original SMPTE/EBU color bars recorded at the tape head for faithful Rec.601 color calibration.",
+      "why_it_matters": "Documents independent North-West recording studios, hand-pasted record sleeve design, and 2-inch analog tape engineering right on the cusp of the late-80s Manchester explosion.",
+      "historical_context": "Regional British arts documentaries of the late 1980s captured music scenes from the inside—talking to tape operators, independent pressing-plant workers, and sleeve designers rather than publicists. Never issued commercially on VHS or DVD, this U-Matic master preserves an irreplaceable portrait of how Northern UK music sounded and looked just before digital production changed everything.",
+      "related_media": [
+        {
+          "ref": "AS-82-RAD-001",
+          "title": "Late-Night Post-Punk Studio Session — Complete 4-Track Off-Air FM Master",
+          "note": "Earlier sonic roots of the Northern studio craft documented in this film."
+        },
+        {
+          "ref": "AS-89-INT-004",
+          "title": "Analog Tape vs. Early Digital: Late-80s Producer & Songwriter Roundtable",
+          "note": "Directly continues the studio-craft debate from the engineers' perspective."
+        }
+      ],
+      "references": [
+        "Granada Television Regional Arts Catalogue — Autumn 1988",
+        "U-Matic Conservation & Baking Protocol Record #UM-88-03"
+      ],
+      "tags": ["1980s", "u-matic", "manchester", "documentary", "analog-studios"],
+      "status": "Calibrated Master"
+    },
+    {
+      "id": "as-1989-int-004",
+      "catalog_ref": "AS-89-INT-004",
+      "title": "Analog Tape vs. Early Digital: Late-80s Producer & Songwriter Roundtable",
+      "date": "1989-06-12",
+      "year": 1989,
+      "era": "1980s",
+      "category": "Interview Archives",
+      "source": "Independent Syndicated UK Music Radio Special — London, UK",
+      "original_format": "1/4-Inch Open-Reel Magnetic Tape (7.5 IPS Half-Track Broadcast Dub)",
+      "transfer_chain": "Revox B77 MkII (NAB/CCIR matched) -> Lynx Hilo ADC (24-bit / 96 kHz) -> Manual Splice De-Click",
+      "technical_metadata": {
+        "duration": "36:18",
+        "format_spec": "24-bit / 96 kHz Dual-Mono PCM (Lossless WAV / FLAC)",
+        "preservation_grade": "A+ Master",
+        "checksum_sha256": "sha256:71c20e889b44fa31d05e6a921b8c304f",
+        "version_history": "v1.0 Open-Reel Flat Transfer -> v1.1 Splice Transient Cleanup"
+      },
+      "restoration_notes": "Verified original 1989 razor-blade tape splices before transfer and re-taped two dry joints using archival splicing tape. Retained raw flat frequency response with zero broadband noise reduction to preserve room voice warmth.",
+      "why_it_matters": "A candid, unhurried 36-minute conversation recorded at the exact turning point between 2-inch analog multitracks, Atari ST MIDI sequencers, and early digital samplers.",
+      "historical_context": "Long-form radio roundtables from the late 1980s allowed artists and engineers to speak for half an hour without soundbite pressure. Listening back nearly four decades later, their debates over tape saturation, drum programming, and studio economics read like a direct prelude to modern home-studio and AI music technology.",
+      "related_media": [
+        {
+          "ref": "AS-88-DOC-003",
+          "title": "Northern Signals: Independent Studios, Tape Craft & Post-Punk Visuals",
+          "note": "Visual companion to the late-80s British studio world discussed on this reel."
+        }
+      ],
+      "references": [
+        "Syndicated Radio Cue Sheet — Broadcast Week 24, June 1989",
+        "Revox B77 Transfer Calibration Card #RT-89-04"
+      ],
+      "tags": ["1980s", "open-reel", "interview", "producers", "music-tech-history"],
+      "status": "Archival Master"
+    },
+    {
+      "id": "as-1994-rad-005",
+      "catalog_ref": "AS-94-RAD-005",
+      "title": "Evening Session Live Broadcast — Four-Song Studio Transmission",
+      "date": "1994-09-14",
+      "year": 1994,
+      "era": "1990s",
+      "category": "Radio Archives",
+      "source": "BBC Radio 1 Evening Session — Maida Vale, London, UK",
+      "original_format": "TDK SA-X90 Chrome Cassette (Direct Roof-Aerial FM Stereo Capture)",
+      "transfer_chain": "Nakamichi BX-300 (azimuth calibrated) -> Focusrite 24-bit / 96 kHz WAV -> Spectral 50 Hz De-Hum",
+      "technical_metadata": {
+        "duration": "21:08",
+        "format_spec": "24-bit / 96 kHz Stereo FLAC (Checksum Verified)",
+        "preservation_grade": "A Broadcast",
+        "checksum_sha256": "sha256:6b5f32d18e0944a7c210e5f9881a3d72",
+        "version_history": "v1.0 Cassette Ingest -> v1.1 Azimuth & Broadcast Continuity Master"
+      },
+      "restoration_notes": "Preserved original BBC FM stereo compression curve, DJ track introductions, and off-air studio banter. Light 50 Hz mains notch and impulse de-click applied only to two momentary FM multipath ticks.",
+      "why_it_matters": "Captures the unmistakable voltage of 1994 British guitar radio—including an acoustic alternate version of track three that was never released on any commercial CD single.",
+      "historical_context": "In the mid-1990s, a single live BBC Evening Session could turn an unknown regional guitar band into a national talking point overnight. Because stations rarely re-aired full sessions once album campaigns ended, home-recorded TDK chrome cassettes became the grassroots archive of 1990s British alternative music.",
+      "related_media": [
+        {
+          "ref": "AS-82-RAD-001",
+          "title": "Late-Night Post-Punk Studio Session — Complete 4-Track Off-Air FM Master",
+          "note": "Earlier chapter in the same BBC Maida Vale live radio session tradition."
+        },
+        {
+          "ref": "AS-96-LIV-006",
+          "title": "Carlisle Underground Club Showcase — Soundboard & Room Matrix",
+          "note": "Shows how mid-90s UK touring guitar energy translated to packed Northern clubs."
+        }
+      ],
+      "references": [
+        "BBC Radio 1 Evening Session Transmission Index — September 1994",
+        "TDK SA-X90 Archivist Handwritten J-Card Inlay (Scanned)"
+      ],
+      "tags": ["1990s", "uk-indie", "britpop-era", "radio-session", "fm-broadcast"],
+      "status": "Verified Transfer"
+    },
+    {
+      "id": "as-1996-liv-006",
+      "catalog_ref": "AS-96-LIV-006",
+      "title": "Carlisle Underground Club Showcase — Soundboard & Room Matrix",
+      "date": "1996-05-11",
+      "year": 1996,
+      "era": "1990s",
+      "category": "Live Performance Archives",
+      "source": "Independent North-West UK Club Circuit — Carlisle, Cumbria, UK",
+      "original_format": "Sony PDP-65C DAT Cassette (48 kHz Direct Soundboard + Room Mic Matrix)",
+      "transfer_chain": "Sony PCM-R500 Coaxial S/PDIF -> Bit-Exact 16-bit / 48 kHz FLAC -> Phase-Aligned Matrix Blend",
+      "technical_metadata": {
+        "duration": "52:30",
+        "format_spec": "16-bit / 48 kHz Bit-Exact PCM Stereo (Zero Generation Loss)",
+        "preservation_grade": "A Broadcast",
+        "checksum_sha256": "sha256:e814a90d3c71b6220a9f54c01d3b87e6",
+        "version_history": "v1.0 Bit-Exact S/PDIF Extraction -> v1.1 Phase-Aligned Ambience Master"
+      },
+      "restoration_notes": "Extracted bit-for-bit over digital S/PDIF to avoid any analog reconversion. Sub-millisecond phase alignment reconciled the soundboard vocal feed with the room pair for natural low-end punch and crowd atmosphere.",
+      "why_it_matters": "Regional Northern club nights were the real backbone of 1990s UK live music—yet almost all surviving live albums only document London venues. This DAT master puts Carlisle on the permanent map.",
+      "historical_context": "Mid-1990s touring bills passing through Cumbria and the Scottish Borders packed sweat-drenched regional venues with bands on the brink of breaking nationally. Preserving a full, uncut 52-minute DAT recording—including tuning pauses, local crowd banter, and support-band energy—documents cultural history that major-label retrospectives consistently overlook.",
+      "related_media": [
+        {
+          "ref": "AS-94-RAD-005",
+          "title": "Evening Session Live Broadcast — Four-Song Studio Transmission",
+          "note": "Studio radio counterpart to the mid-90s UK club circuit."
+        },
+        {
+          "ref": "AS-99-DOC-008",
+          "title": "Pressing Record: The Cassette & VHS Archivist Underground of the 1990s",
+          "note": "Explores the fans and sound engineers who saved tapes like this DAT."
+        }
+      ],
+      "references": [
+        "Original Venue Flyer & Setlist Sheet — Carlisle, May 1996",
+        "DAT Clone Integrity Verification Log #DAT-96-06"
+      ],
+      "tags": ["1990s", "carlisle", "cumbria", "soundboard", "dat-master", "live-archive"],
+      "status": "Bit-Exact Transfer"
+    },
+    {
+      "id": "as-1998-tv-007",
+      "catalog_ref": "AS-98-TV-007",
+      "title": "Channel 4 Late-Night Live Performance & Backstage Rehearsal Reel",
+      "date": "1998-02-20",
+      "year": 1998,
+      "era": "1990s",
+      "category": "Television Broadcasts",
+      "source": "Channel 4 Terrestrial Broadcast — Manchester / London, UK",
+      "original_format": "Fuji Pro PAL S-VHS SP Recording (First-Generation Off-Air)",
+      "transfer_chain": "Panasonic AG-1980 Built-In TBC -> Blackmagic Intensity Pro (10-bit 4:2:2) -> QTGMC 50p Deinterlace",
+      "technical_metadata": {
+        "duration": "14:18",
+        "format_spec": "720x576 PAL 50p (FFV1 Lossless MKV + 48 kHz Hi-Fi Stereo)",
+        "preservation_grade": "B+ Off-Air",
+        "checksum_sha256": "sha256:2c77d0e91a54fb83e6091c2a44d7e310",
+        "version_history": "v1.0 S-VHS Line-TBC Capture -> v1.1 U/V Chroma Alignment Pass"
+      },
+      "restoration_notes": "Line time-base correction eliminated horizontal VHS wiggle across vertical studio lights. Applied +2px U/V chroma-shift correction while avoiding destructive AI upscaling so original CRT broadcast grain stays authentic.",
+      "why_it_matters": "Preserves the complete broadcast block—including the Channel 4 continuity announcer bumper and a raw backstage acoustic rehearsal omitted from every official DVD compilation.",
+      "historical_context": "Late-night British music television in the late 1990s sat right at the twilight of linear analog broadcasting. Within five years, digital switchover and short online clips replaced unhurried live-studio slots. Saving complete first-generation S-VHS off-air captures keeps both the music and the broadcast framing intact.",
+      "related_media": [
+        {
+          "ref": "AS-85-TV-002",
+          "title": "Friday Night Live Television Music Special & Backstage Profile",
+          "note": "Earlier 1980s Channel 4 live music broadcast preserved from Betamax."
+        }
+      ],
+      "references": [
+        "Channel 4 Late-Night Music Listings — February 1998",
+        "S-VHS Restoration & Chroma Alignment Log #TV-98-07"
+      ],
+      "tags": ["1990s", "pal-svhs", "channel-4", "manchester", "restored-footage"],
+      "status": "Restored 50p Master"
+    },
+    {
+      "id": "as-1999-doc-008",
+      "catalog_ref": "AS-99-DOC-008",
+      "title": "Pressing Record: The Cassette & VHS Archivist Underground of the 1990s",
+      "date": "1999-11-05",
+      "year": 1999,
+      "era": "1990s",
+      "category": "Documentary Archives",
+      "source": "Independent UK Cultural Documentary — North-West / National Broadcast Feature",
+      "original_format": "Sony Digital Betacam Archival Dub (BCT-64MLA)",
+      "transfer_chain": "Sony DVW-A500 SDI Direct Ingest -> FFV1 Lossless MKV -> -16 LUFS Broadcast Stereo",
+      "technical_metadata": {
+        "duration": "46:12",
+        "format_spec": "720x576 PAL 10-bit SDI (Bit-Exact DigiBeta Transfer)",
+        "preservation_grade": "A+ Master",
+        "checksum_sha256": "sha256:8f0a4d19c6e2b755301f8a22e9d4c16b",
+        "version_history": "v1.0 Lossless SDI Master Ingest (Zero Recompression)"
+      },
+      "restoration_notes": "Pure digital SDI ingest directly from Digital Betacam master with zero generational compression loss. Audio calibrated to -16 LUFS stereo with full dynamic headroom preserved.",
+      "why_it_matters": "Tells the human story of the tape-traders, bedroom radio recordists, and early fan-site archivists who quietly preserved 1980s and 1990s music culture before streaming existed.",
+      "historical_context": "Before YouTube or cloud archives, preserving rare television performances and radio sessions meant maintaining shoeboxes of labelled cassettes, trading VHS dubs through the post, and typing tracklists onto early dial-up fan websites. This 1999 documentary captures that community at the exact hinge of the millennium—and explains the ethos behind Archive Signal itself.",
+      "related_media": [
+        {
+          "ref": "AS-96-LIV-006",
+          "title": "Carlisle Underground Club Showcase — Soundboard & Room Matrix",
+          "note": "Real-world example of independent regional tape preservation from the same era."
+        },
+        {
+          "ref": "AS-89-INT-004",
+          "title": "Analog Tape vs. Early Digital: Late-80s Producer & Songwriter Roundtable",
+          "note": "The earlier technological shift from analog reels to digital tools."
+        }
+      ],
+      "references": [
+        "Independent UK Broadcast Documentary Registry — Autumn 1999",
+        "Digital Betacam SDI Checksum Manifest #DB-99-08"
+      ],
+      "tags": ["1990s", "documentary", "tape-trading", "cultural-preservation", "digibeta"],
+      "status": "Archival Master"
+    }
+  ]
+}

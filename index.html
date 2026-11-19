@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Archive Signal // 1980s &amp; 1990s Broadcast Preservation Museum</title>
+<link rel="icon" type="image/png" href="docs/archive_signal_logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #111111;
+    --bg-deep: #0b0b0c;
+    --panel: rgba(24, 24, 27, 0.88);
+    --glass: linear-gradient(155deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+    --border: rgba(255, 255, 255, 0.11);
+    --border-hi: rgba(255, 176, 0, 0.34);
+    --rim: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    --cream: #f5f1e8;
+    --body: #d5cfc4;
+    --muted: #938e85;
+    --amber: #ffb000;
+    --amber-dim: rgba(255, 176, 0, 0.14);
+    --red: #d43d2c;
+    --red-dim: rgba(212, 61, 44, 0.16);
+    --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--cream);
+    background:
+      radial-gradient(ellipse 58% 40% at 88% 4%, rgba(255, 176, 0, 0.12), transparent 64%),
+      radial-gradient(ellipse 46% 38% at 10% 94%, rgba(212, 61, 44, 0.11), transparent 64%),
+      linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+      var(--bg);
+    background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px, 100% 100%;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, select, textarea { font: inherit; color: inherit; }
+
+  /* Sticky Vintage Broadcast Header */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(17, 17, 17, 0.92);
+    backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img {
+    width: 42px;
+    height: 42px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 176, 0, 0.55);
+    object-fit: cover;
+    background: #111111;
+  }
+  .brand h1 { font-size: 16px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); }
+  .brand p { font-family: var(--mono); font-size: 10.5px; color: var(--amber); letter-spacing: 0.08em; }
+
+  .signal-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 420px;
+  }
+  .rec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    background: var(--red-dim);
+    border: 1px solid rgba(212, 61, 44, 0.65);
+    padding: 4px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .rec-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 8px var(--red);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  #signal-canvas {
+    width: 100%;
+    height: 32px;
+    background: #09090a;
+    border: 1px solid rgba(255, 176, 0, 0.32);
+    border-radius: 3px;
+    display: block;
+  }
+
+  .top-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(255, 176, 0, 0.6);
+    background: var(--amber);
+    color: #111111;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: filter 0.12s;
+  }
+  .btn.sec {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--cream);
+    box-shadow: var(--rim);
+  }
+  .btn.red {
+    background: var(--red);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+  .btn:hover { filter: brightness(1.08); }
+
+  /* Main Container */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 26px 24px 60px; display: flex; flex-direction: column; gap: 20px; }
+
+  /* Museum Hero Banner */
+  .hero {
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--amber);
+    border-top: 1px solid rgba(255, 176, 0, 0.25);
+    border-radius: 6px;
+    box-shadow: var(--rim), 0 16px 40px rgba(0, 0, 0, 0.55);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hero h2 { font-size: 27px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.22; margin-bottom: 10px; color: var(--cream); }
+  .hero p { color: var(--body); font-size: 14px; }
+  .hero p strong { color: var(--amber); font-weight: 700; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat {
+    background: rgba(0, 0, 0, 0.42);
+    border: 1px solid var(--border);
+    border-top: 2px solid rgba(255, 176, 0, 0.35);
+    border-radius: 4px;
+    padding: 11px 13px;
+    font-family: var(--mono);
+  }
+  .stat.red-top { border-top-color: var(--red); }
+  .stat-k { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .stat-v { font-size: 18px; font-weight: 800; color: var(--cream); margin-top: 2px; }
+  .stat-v.amber { color: var(--amber); }
+  .stat-v.red { color: #ff6b57; }
+
+  /* Filter & Decade Toolbar */
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 14px 16px;
+  }
+  .toolbar-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .search-in {
+    flex: 1;
+    min-width: 240px;
+    background: #09090a;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    padding: 9px 13px;
+    font-size: 13.5px;
+    outline: none;
+    color: var(--cream);
+  }
+  .search-in:focus { border-color: var(--amber); }
+  .era-pills { display: flex; gap: 6px; }
+  .era-pill {
+    padding: 8px 13px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--body);
+  }
+  .era-pill:hover { border-color: var(--red); }
+  .era-pill.active { background: var(--red); border-color: var(--red); color: #ffffff; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .pill {
+    padding: 6px 11px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--border);
+    color: var(--body);
+  }
+  .pill:hover { border-color: var(--amber); }
+  .pill.active { background: var(--amber); border-color: var(--amber); color: #111111; font-weight: 800; }
+
+  /* Museum Exhibits Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(355px, 1fr)); gap: 18px; }
+  .entry-card {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--amber);
+    border-radius: 5px;
+    box-shadow: var(--rim), 0 12px 30px rgba(0, 0, 0, 0.45);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    cursor: pointer;
+    transition: transform 0.14s, border-color 0.14s;
+  }
+  .entry-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--amber);
+    box-shadow: 0 14px 36px rgba(255, 176, 0, 0.12);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+  }
+  .ref-code { color: var(--amber); font-weight: 700; letter-spacing: 0.07em; }
+  .era-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--red-dim);
+    border: 1px solid rgba(212, 61, 44, 0.55);
+    color: #ff8070;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .grade {
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: var(--amber-dim);
+    border: 1px solid rgba(255, 176, 0, 0.45);
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .entry-title { font-size: 16.5px; font-weight: 700; line-height: 1.34; color: var(--cream); }
+  .entry-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .entry-meta strong { color: var(--body); }
+  .why-box {
+    background: rgba(0, 0, 0, 0.34);
+    border-left: 2px solid var(--amber);
+    padding: 9px 11px;
+    border-radius: 0 4px 4px 0;
+  }
+  .why-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .why-text { font-size: 13px; color: var(--cream); line-height: 1.5; }
+  .source-line {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 6px 9px;
+  }
+  .card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .open-cue { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--amber); white-space: nowrap; }
+
+  /* Museum Dossier & About Modals */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 6, 7, 0.84);
+    backdrop-filter: blur(7px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 60;
+  }
+  .backdrop.open { display: flex; }
+  .modal {
+    width: min(820px, 96vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #141416;
+    border: 1px solid rgba(255, 176, 0, 0.32);
+    border-top: 3px solid var(--red);
+    border-radius: 6px;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .spine-step {
+    position: relative;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    padding: 12px 15px;
+  }
+  .spine-step.story { border-left-color: var(--red); background: rgba(212, 61, 44, 0.06); }
+  .dossier-k {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+  .spine-step.story .dossier-k { color: #ff7966; }
+  .dossier-v { font-size: 13.8px; color: var(--body); }
+  .dossier-v strong { color: var(--cream); }
+  .dossier-mono { font-family: var(--mono); font-size: 12px; color: var(--cream); line-height: 1.55; }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 4px; }
+  .tech-cell {
+    background: #0c0c0e;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .tech-cell span { display: block; font-size: 9.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
+  .related-list { display: flex; flex-direction: column; gap: 7px; }
+  .related-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: #0d0d0f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 9px 12px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .related-item:hover { border-color: var(--amber); }
+  .ref-list { padding-left: 18px; color: var(--body); font-size: 12.5px; font-family: var(--mono); }
+  .ref-list li { margin-bottom: 4px; }
+
+  .notes-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .note-item {
+    background: #0c0c0e;
+    border-left: 2px solid var(--red);
+    padding: 9px 11px;
+    font-size: 12.8px;
+    color: var(--body);
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-family: var(--mono); font-size: 10px; color: var(--amber); text-transform: uppercase; letter-spacing: 0.06em; }
+  .field input, .field select, .field textarea {
+    background: #0a0a0c;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+    outline: none;
+    color: var(--cream);
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--amber); }
+
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px; }
+  .port-card {
+    background: #0c0c0e;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--amber);
+    border-radius: 4px;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .port-card:hover { border-color: var(--amber); }
+  .port-card .role { font-family: var(--mono); font-size: 9.5px; color: #ff7966; text-transform: uppercase; letter-spacing: 0.08em; }
+  .port-card h4 { font-size: 14px; color: var(--cream); }
+  .port-card p { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+  footer.museum-foot {
+    max-width: 1200px;
+    margin: 0 auto 36px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  footer.museum-foot strong { color: var(--amber); }
+
+  @media (max-width: 840px) {
+    .hero, .form-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .signal-strip { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="docs/archive_signal_logo.png" alt="Archive Signal" onerror="this.style.display='none'" />
+      <div>
+        <h1>Archive Signal</h1>
+        <p>1980s &amp; 1990s DIGITAL PRESERVATION MUSEUM</p>
+      </div>
+    </div>
+
+    <div class="signal-strip">
+      <span class="rec-badge"><span class="rec-dot"></span>SIGNAL LOCKED</span>
+      <canvas id="signal-canvas"></canvas>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn sec" onclick="openAboutModal()">About &amp; Founder</button>
+      <button class="btn" onclick="openSubmitModal()">+ Catalog Recording</button>
+      <button class="btn sec" onclick="exportCatalogJson()">Export JSON</button>
+      <a class="btn sec" href="https://github.com/JupiterIsland/archive-signal" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="kicker">Digital Preservation Museum // 1980s &amp; 1990s Broadcast Culture</div>
+        <h2>Every recording has a history. Archive Signal keeps it alive.</h2>
+        <p>
+          Many of the greatest moments in 1980s and 1990s music culture survive only because somebody pressed record.
+          Archive Signal goes beyond storage—pairing rare off-air television, BBC radio sessions, documentaries, interviews,
+          and live tapes with <strong>why each recording matters</strong>, exact deck transfer chains, and checksum-verified provenance.
+        </p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-k">Exhibits Preserved</div><div class="stat-v amber" id="st-total">0</div></div>
+        <div class="stat red-top"><div class="stat-k">1980s Broadcasts</div><div class="stat-v red" id="st-80s">0</div></div>
+        <div class="stat"><div class="stat-k">1990s Broadcasts</div><div class="stat-v amber" id="st-90s">0</div></div>
+        <div class="stat red-top"><div class="stat-k">Integrity Standard</div><div class="stat-v">SHA-256</div></div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-top">
+        <input class="search-in" id="search-in" placeholder="Search recordings, 80s/90s broadcasters, Betamax/DAT/cassette formats, decks, or stories..." oninput="renderGrid()" />
+        <div class="era-pills" id="era-pills">
+          <button class="era-pill active" data-era="ALL" onclick="setEra('ALL')">ALL (80s &amp; 90s)</button>
+          <button class="era-pill" data-era="1980s" onclick="setEra('1980s')">1980s</button>
+          <button class="era-pill" data-era="1990s" onclick="setEra('1990s')">1990s</button>
+        </div>
+      </div>
+      <div class="pill-row" id="cat-pills"></div>
+    </section>
+
+    <section class="grid" id="vault-grid"></section>
+  </main>
+
+  <footer class="museum-foot">
+    <div><strong>ARCHIVE SIGNAL</strong> &middot; Created by Richard John Murray (JupiterIsland)</div>
+    <div>Building tools for intelligence, creativity and preservation &middot; MemoryOS &middot; RIFFDNA&trade; &middot; Archive Signal</div>
+  </footer>
+
+  <!-- DIGITAL MUSEUM DOSSIER MODAL -->
+  <div class="backdrop" id="dossier-backdrop" onclick="if(event.target===this)closeDossier()">
+    <div class="modal" id="dossier-modal"></div>
+  </div>
+
+  <!-- ABOUT & FOUNDER STORY MODAL -->
+  <div class="backdrop" id="about-backdrop" onclick="if(event.target===this)closeAboutModal()">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <div class="kicker">Founder Story &amp; Mission</div>
+          <h3 style="font-size:21px;">About Archive Signal</h3>
+        </div>
+        <button class="btn sec" onclick="closeAboutModal()">Close</button>
+      </div>
+      <div class="spine-step story">
+        <div class="dossier-k">Why Preservation Matters</div>
+        <div class="dossier-v" style="display:flex; flex-direction:column; gap:10px;">
+          <p><strong>Archive Signal</strong> was created by <strong>Richard John Murray</strong> from a lifelong interest in music history, 1980s and 1990s broadcast culture, and the recordings that risk being forgotten.</p>
+          <p>Every year, interviews, documentaries, radio programmes, live performances, and television broadcasts disappear from public view through rights changes, platform closures, ageing magnetic tape, and forgotten collections.</p>
+          <p>Archive Signal exists to document, preserve, and provide historical context for those recordings—ensuring that important pieces of cultural history remain discoverable for future generations.</p>
+          <p style="color:var(--amber); font-weight:700;">Because preservation is about more than saving media. It's about preserving the stories attached to it.</p>
+        </div>
+      </div>
+      <div class="spine-step">
+        <div class="dossier-k">The Jupiter Island Portfolio — Building tools for intelligence, creativity and preservation.</div>
+        <div class="portfolio-grid">
+          <a class="port-card" href="https://github.com/JupiterIsland/memoryos" target="_blank" rel="noopener">
+            <span class="role">The Builder // AI Workstation</span>
+            <h4>MemoryOS // Jupiter Studio</h4>
+            <p>One workspace for intelligent model routing, project context, speculative offload, and live hardware telemetry.</p>
+          </a>
+          <a class="port-card" href="https://github.com/JupiterIsland/riffdna" target="_blank" rel="noopener">
+            <span class="role">The Inventor // Music Technology</span>
+            <h4>RIFFDNA&trade;</h4>
+            <p>Player-adaptive guitar tone engine that learns how musicians play and evolves tone in real time.</p>
+          </a>
+          <a class="port-card" href="https://github.com/JupiterIsland/archive-signal" target="_blank" rel="noopener">
+            <span class="role">The Archivist // Digital Preservation</span>
+            <h4>Archive Signal</h4>
+            <p>A digital museum preserving 1980s &amp; 1990s broadcasts, session tapes, documentaries, and the stories behind them.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD NEW CATALOG RECORDING MODAL -->
+  <div class="backdrop" id="submit-backdrop" onclick="if(event.target===this)closeSubmitModal()">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <div class="kicker">Archivist Intake // 1980s &amp; 1990s Vault</div>
+          <h3 style="font-size:19px;">Catalog a Recording or Broadcast</h3>
+        </div>
+        <button class="btn sec" onclick="closeSubmitModal()">Close</button>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>Title</label><input id="f-title" placeholder="e.g. BBC Radio 1 Live Session" /></div>
+        <div class="field"><label>Catalog Ref</label><input id="f-ref" placeholder="e.g. AS-87-RAD-009" /></div>
+        <div class="field">
+          <label>Archive Category</label>
+          <select id="f-cat">
+            <option>Television Broadcasts</option>
+            <option>Radio Archives</option>
+            <option>Documentary Archives</option>
+            <option>Live Performance Archives</option>
+            <option>Interview Archives</option>
+          </select>
+        </div>
+        <div class="field"><label>Broadcast Date (YYYY-MM-DD)</label><input id="f-date" value="1988-10-15" /></div>
+        <div class="field"><label>Source / Broadcast Origin</label><input id="f-source" placeholder="e.g. Channel 4 / BBC Radio 1, UK" /></div>
+        <div class="field"><label>Original Physical Format</label><input id="f-format" placeholder="e.g. Betamax L-750 / TDK SA-X90 / DAT" /></div>
+      </div>
+      <div class="field"><label>Why This Recording Matters (Story Headline)</label><input id="f-why" placeholder="One punchy sentence on why this broadcast deserves preservation..." /></div>
+      <div class="field"><label>Signal Transfer Chain</label><input id="f-chain" placeholder="Deck -> TBC / ADC -> Lossless Master" /></div>
+      <div class="field"><label>Restoration Notes</label><textarea id="f-notes" rows="2" placeholder="Azimuth alignment, tape baking, TBC, hum removal..."></textarea></div>
+      <div class="field"><label>Historical Context</label><textarea id="f-context" rows="2" placeholder="Full cultural story and background..."></textarea></div>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="btn sec" onclick="closeSubmitModal()">Cancel</button>
+        <button class="btn" onclick="saveNewEntry()">Save to Local Museum</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const FALLBACK_ENTRIES = [
+  {
+    id: "as-1982-rad-001", catalog_ref: "AS-82-RAD-001",
+    title: "Late-Night Post-Punk Studio Session — Complete 4-Track Off-Air FM Master",
+    date: "1982-11-18", year: 1982, era: "1980s", category: "Radio Archives",
+    source: "BBC Radio 1 FM Stereo Broadcast — Maida Vale Studio 4, London, UK",
+    original_format: "Maxell XLII-90 High-Bias Chrome Cassette (Direct FM Tuner Capture)",
+    transfer_chain: "Nakamichi Dragon (auto-azimuth calibrated) -> RME Fireface UCX II (24-bit / 96 kHz WAV) -> 19 kHz Pilot Notch",
+    technical_metadata: {
+      duration: "18:54", format_spec: "24-bit / 96 kHz Stereo PCM (FLAC Archival Master)",
+      preservation_grade: "A Broadcast", checksum_sha256: "sha256:9f84b2c1e07a3d418c5f021a7749bc0d",
+      version_history: "v1.0 Raw Capture (2024-03) -> v1.1 Azimuth & 50 Hz Hum Restored (2026-11)"
+    },
+    restoration_notes: "Calibrated playback azimuth specifically for the 1982 deck. Removed 50 Hz mains hum and 19 kHz FM pilot bleed while keeping broadcast dynamics and presenter links intact.",
+    why_it_matters: "Captures an unissued early-80s UK post-punk studio session recorded months before the band's debut LP—surviving only because a listener pressed record on a chrome cassette.",
+    historical_context: "Late-night BBC Radio 1 specialist sessions in the early 1980s acted as the real laboratory of British independent music, preserving raw guitar textures and presenter introductions exactly as heard across Britain.",
+    related_media: [{ ref: "AS-88-DOC-003", title: "Northern Signals: Independent Studios, Tape Craft & Post-Punk Visuals", note: "Surveys the 1980s UK studio culture behind this sound." }],
+    references: ["BBC Radio 1 Transmission Log — Week 46, November 1982"],
+    tags: ["1980s", "bbc-radio", "post-punk", "chrome-cassette"], status: "Verified Transfer"
+  },
+  {
+    id: "as-1985-tv-002", catalog_ref: "AS-85-TV-002",
+    title: "Friday Night Live Television Music Special & Backstage Profile",
+    date: "1985-03-08", year: 1985, era: "1980s", category: "Television Broadcasts",
+    source: "Channel 4 / Tyne Tees Television — UK PAL Terrestrial Broadcast",
+    original_format: "Sony Betamax L-750 Hi-Fi PAL Tape (First-Generation Off-Air)",
+    transfer_chain: "Sony SL-HF950 PAL Betamax -> Snell & Wilcox TBS185 TBC -> Blackmagic 10-bit 4:2:2 -> QTGMC 50p",
+    technical_metadata: {
+      duration: "24:16", format_spec: "720x576 PAL 50p (FFV1 Lossless MKV + Hi-Fi AFM Stereo)",
+      preservation_grade: "A- Off-Air", checksum_sha256: "sha256:4a1e770c912d84f0e3a21b9d6c04f18e",
+      version_history: "v1.0 Betamax Line-TBC Ingest -> v1.2 Chroma Shift Master"
+    },
+    restoration_notes: "Preserved full 50fps PAL live television motion via QTGMC deinterlacing; aligned +1.5px chroma shift and kept untouched Hi-Fi AFM stereo audio.",
+    why_it_matters: "Mid-80s live UK youth music television rarely survived network tape wiping in complete form—this Betamax preserves continuity announcements, soundchecks, and live studio mix.",
+    historical_context: "Before 24-hour music channels and streaming archives, Friday evening terrestrial broadcasts from Newcastle and Manchester were national cultural events preserved today mainly by home Betamax recordists.",
+    related_media: [{ ref: "AS-98-TV-007", title: "Channel 4 Late-Night Live Performance & Backstage Rehearsal Reel", note: "Thirteen years later in the same live UK TV lineage." }],
+    references: ["Channel 4 Broadcast Schedule — Friday 8 March 1985 (18:30 GMT)"],
+    tags: ["1980s", "betamax", "channel-4", "pal-broadcast"], status: "Restored 50p Master"
+  },
+  {
+    id: "as-1996-liv-006", catalog_ref: "AS-96-LIV-006",
+    title: "Carlisle Underground Club Showcase — Soundboard & Room Matrix",
+    date: "1996-05-11", year: 1996, era: "1990s", category: "Live Performance Archives",
+    source: "Independent North-West UK Club Circuit — Carlisle, Cumbria, UK",
+    original_format: "Sony PDP-65C DAT Cassette (48 kHz Direct Soundboard + Room Mic Matrix)",
+    transfer_chain: "Sony PCM-R500 Coaxial S/PDIF -> Bit-Exact 16-bit / 48 kHz FLAC -> Phase-Aligned Matrix Blend",
+    technical_metadata: {
+      duration: "52:30", format_spec: "16-bit / 48 kHz Bit-Exact PCM Stereo",
+      preservation_grade: "A Broadcast", checksum_sha256: "sha256:e814a90d3c71b6220a9f54c01d3b87e6",
+      version_history: "v1.0 Bit-Exact S/PDIF Extraction -> v1.1 Phase-Aligned Ambience Master"
+    },
+    restoration_notes: "Extracted bit-for-bit over digital S/PDIF with sub-millisecond phase alignment between soundboard vocals and room ambience mics.",
+    why_it_matters: "Regional Northern club nights were the backbone of 1990s UK live music—yet almost all surviving live albums document London venues. This DAT master puts Carlisle on the permanent map.",
+    historical_context: "Mid-1990s touring bills passing through Cumbria and the Scottish Borders packed regional clubs with bands on the brink of breaking nationally.",
+    related_media: [{ ref: "AS-94-RAD-005", title: "Evening Session Live Broadcast — Four-Song Studio Transmission", note: "Studio radio counterpart from the same era." }],
+    references: ["Original Venue Flyer & Setlist Sheet — Carlisle, May 1996"],
+    tags: ["1990s", "carlisle", "cumbria", "soundboard", "dat-master"], status: "Bit-Exact Transfer"
+  }
+];
+
+const CATEGORIES = [
+  "ALL",
+  "Television Broadcasts",
+  "Radio Archives",
+  "Documentary Archives",
+  "Live Performance Archives",
+  "Interview Archives"
+];
+
+let entries = [];
+let activeCategory = "ALL";
+let activeEra = "ALL";
+
+function esc(s) {
+  return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function getLocalCustomEntries() {
+  try { return JSON.parse(localStorage.getItem("archive_signal.custom.v2") || "[]"); } catch { return []; }
+}
+function getNotes(id) {
+  try { return JSON.parse(localStorage.getItem("archive_signal.notes." + id) || "[]"); } catch { return []; }
+}
+function addNote(id) {
+  const input = document.getElementById("note-input");
+  const txt = (input.value || "").trim();
+  if (!txt) return;
+  const list = getNotes(id);
+  list.unshift({ text: txt, date: new Date().toISOString().slice(0, 10) });
+  localStorage.setItem("archive_signal.notes." + id, JSON.stringify(list));
+  openDossier(id);
+}
+
+async function bootCatalog() {
+  let base = FALLBACK_ENTRIES;
+  try {
+    const res = await fetch("catalog/archives.json");
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.entries) && data.entries.length) base = data.entries;
+    }
+  } catch {}
+  entries = [...getLocalCustomEntries(), ...base];
+  document.getElementById("st-total").textContent = entries.length;
+  document.getElementById("st-80s").textContent = entries.filter((e) => e.era === "1980s").length;
+  document.getElementById("st-90s").textContent = entries.filter((e) => e.era === "1990s").length;
+  renderPills();
+  renderGrid();
+}
+
+function renderPills() {
+  document.getElementById("cat-pills").innerHTML = CATEGORIES.map((c) =>
+    `<button class="pill ${c === activeCategory ? "active" : ""}" onclick="setCategory('${c}')">${c}</button>`
+  ).join("");
+}
+function setCategory(c) { activeCategory = c; renderPills(); renderGrid(); }
+function setEra(era) {
+  activeEra = era;
+  document.querySelectorAll(".era-pill").forEach((b) => {
+    b.classList.toggle("active", b.dataset.era === era);
+  });
+  renderGrid();
+}
+
+function renderGrid() {
+  const q = (document.getElementById("search-in").value || "").toLowerCase().trim();
+  const filtered = entries.filter((e) => {
+    if (activeCategory !== "ALL" && e.category !== activeCategory) return false;
+    if (activeEra !== "ALL" && e.era !== activeEra) return false;
+    if (q) {
+      const hay = [
+        e.title, e.catalog_ref, e.date, e.source, e.original_format,
+        e.transfer_chain, e.why_it_matters, e.historical_context,
+        ...(e.tags || [])
+      ].join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const grid = document.getElementById("vault-grid");
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="entry-card" style="grid-column:1/-1; cursor:default;"><div class="entry-title">No matching 80s &amp; 90s archive exhibits</div><div class="why-text">Clear your search filters or click "+ Catalog Recording" to log a tape into the vault.</div></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map((e) => {
+    const grade = (e.technical_metadata && e.technical_metadata.preservation_grade) || "A Broadcast";
+    const dur = (e.technical_metadata && e.technical_metadata.duration) || "";
+    return `
+      <article class="entry-card" onclick="openDossier('${esc(e.id)}')">
+        <div class="card-top">
+          <span><span class="ref-code">${esc(e.catalog_ref)}</span><span class="era-tag">${esc(e.era)}</span></span>
+          <span class="grade">${esc(grade)}</span>
+        </div>
+        <div class="entry-title">${esc(e.title)}</div>
+        <div class="entry-meta"><strong>${esc(e.category)}</strong> &middot; ${esc(e.date)} ${dur ? "&middot; " + esc(dur) : ""}</div>
+        <div class="why-box">
+          <div class="why-label">Why This Recording Matters</div>
+          <div class="why-text">${esc(e.why_it_matters)}</div>
+        </div>
+        <div class="source-line">FORMAT: ${esc(e.original_format)}</div>
+        <div class="card-foot">
+          <div class="tags">${(e.tags || []).slice(0, 4).map((t) => `<span class="tag">#${esc(t)}</span>`).join("")}</div>
+          <span class="open-cue">Inspect Dossier &rarr;</span>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function jumpByRef(ref) {
+  const found = entries.find((x) => x.catalog_ref === ref);
+  if (found) openDossier(found.id);
+}
+
+function openDossier(id) {
+  const e = entries.find((x) => x.id === id);
+  if (!e) return;
+  const notes = getNotes(id);
+  const tech = e.technical_metadata || {};
+  const related = Array.isArray(e.related_media) ? e.related_media : [];
+  const refs = Array.isArray(e.references) ? e.references : [];
+
+  document.getElementById("dossier-modal").innerHTML = `
+    <div class="modal-head">
+      <div>
+        <div class="kicker">${esc(e.catalog_ref)} // ${esc(e.category)} &middot; ${esc(e.date)}</div>
+        <h3 style="font-size:21px; line-height:1.3; color:var(--cream);">${esc(e.title)}</h3>
+        <div class="entry-meta" style="margin-top:5px;">Status: <strong>${esc(e.status)}</strong> &middot; Grade: <strong>${esc(tech.preservation_grade || "A Broadcast")}</strong></div>
+      </div>
+      <button class="btn sec" onclick="closeDossier()">Close</button>
+    </div>
+
+    <div class="spine-step story">
+      <div class="dossier-k">1. Why This Recording Matters</div>
+      <div class="dossier-v" style="color:var(--cream); font-size:14.5px; font-weight:500;">${esc(e.why_it_matters)}</div>
+    </div>
+
+    <div class="spine-step">
+      <div class="dossier-k">2. Source &amp; Original Physical Format</div>
+      <div class="dossier-mono"><strong>SOURCE:</strong> ${esc(e.source)}<br/><strong>FORMAT:</strong> ${esc(e.original_format)}</div>
+    </div>
+
+    <div class="spine-step">
+      <div class="dossier-k">3. Signal Transfer Chain</div>
+      <div class="dossier-mono">${esc(e.transfer_chain)}</div>
+    </div>
+
+    <div class="spine-step">
+      <div class="dossier-k">4. Technical Metadata &amp; Integrity Verification</div>
+      <div class="tech-grid">
+        <div class="tech-cell"><span>Duration</span>${esc(tech.duration || "—")}</div>
+        <div class="tech-cell"><span>Master Format Spec</span>${esc(tech.format_spec || "—")}</div>
+        <div class="tech-cell"><span>Integrity Checksum</span>${esc(tech.checksum_sha256 || "Pending")}</div>
+        <div class="tech-cell"><span>Version History</span>${esc(tech.version_history || "v1.0")}</div>
+      </div>
+    </div>
+
+    <div class="spine-step">
+      <div class="dossier-k">5. Restoration &amp; Conservation Notes</div>
+      <div class="dossier-v">${esc(e.restoration_notes)}</div>
+    </div>
+
+    <div class="spine-step story">
+      <div class="dossier-k">6. Historical &amp; Cultural Context</div>
+      <div class="dossier-v">${esc(e.historical_context)}</div>
+    </div>
+
+    ${related.length ? `
+    <div class="spine-step">
+      <div class="dossier-k">7. Related Archive Signals</div>
+      <div class="related-list">
+        ${related.map((r) => `
+          <button class="related-item" onclick="jumpByRef('${esc(r.ref)}')">
+            <div>
+              <div style="font-family:var(--mono); font-size:11px; color:var(--amber); font-weight:700;">${esc(r.ref)} &mdash; ${esc(r.title)}</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:2px;">${esc(r.note)}</div>
+            </div>
+            <span class="open-cue">Open &rarr;</span>
+          </button>
+        `).join("")}
+      </div>
+    </div>` : ""}
+
+    ${refs.length ? `
+    <div class="spine-step">
+      <div class="dossier-k">8. Archival References &amp; Logs</div>
+      <ul class="ref-list">${refs.map((rf) => `<li>${esc(rf)}</li>`).join("")}</ul>
+    </div>` : ""}
+
+    <div class="spine-step">
+      <div class="dossier-k">9. Community Discussion &amp; Preservation Notes (${notes.length})</div>
+      <div style="display:flex; gap:8px; margin-top:6px;">
+        <input id="note-input" class="search-in" placeholder="Remember hearing this broadcast? Add date, venue, or tape lineage memory..." />
+        <button class="btn" onclick="addNote('${esc(e.id)}')">Add Note</button>
+      </div>
+      <div class="notes-list">
+        ${notes.map((n) => `<div class="note-item"><strong>${esc(n.date)}:</strong> ${esc(n.text)}</div>`).join("") || `<div style="font-size:12px; color:var(--muted);">No community notes logged yet for this exhibit.</div>`}
+      </div>
+    </div>
+  `;
+  document.getElementById("dossier-backdrop").classList.add("open");
+}
+function closeDossier() { document.getElementById("dossier-backdrop").classList.remove("open"); }
+function openAboutModal() { document.getElementById("about-backdrop").classList.add("open"); }
+function closeAboutModal() { document.getElementById("about-backdrop").classList.remove("open"); }
+function openSubmitModal() { document.getElementById("submit-backdrop").classList.add("open"); }
+function closeSubmitModal() { document.getElementById("submit-backdrop").classList.remove("open"); }
+
+function saveNewEntry() {
+  const title = document.getElementById("f-title").value.trim();
+  if (!title) return;
+  const dateStr = (document.getElementById("f-date").value || "1988-01-01").trim();
+  const year = parseInt(dateStr.slice(0, 4), 10) || 1988;
+  const era = year < 1990 ? "1980s" : "1990s";
+  const item = {
+    id: "custom-" + Date.now(),
+    catalog_ref: document.getElementById("f-ref").value.trim() || `AS-${String(year).slice(-2)}-USR`,
+    title,
+    date: /^\d{4}-\d{2}-\d{2}$/.test(dateStr) ? dateStr : `${year}-01-01`,
+    year,
+    era,
+    category: document.getElementById("f-cat").value,
+    source: document.getElementById("f-source").value.trim() || "UK Off-Air Archive",
+    original_format: document.getElementById("f-format").value.trim() || "Analog Tape Master",
+    transfer_chain: document.getElementById("f-chain").value.trim() || "Direct Lossless Transfer",
+    technical_metadata: {
+      duration: "TBD",
+      format_spec: "Lossless Archival Master",
+      preservation_grade: "A Broadcast",
+      checksum_sha256: "sha256:local-intake-pending",
+      version_history: "v1.0 Local Museum Intake"
+    },
+    restoration_notes: document.getElementById("f-notes").value.trim() || "Pending restoration log.",
+    why_it_matters: document.getElementById("f-why").value.trim() || "Preserved from a rare 80s/90s off-air collection.",
+    historical_context: document.getElementById("f-context").value.trim() || "Community submitted cultural broadcast record.",
+    related_media: [],
+    references: ["Community Archivist Submission — Local Vault Intake"],
+    tags: [era, "community-archive"],
+    status: "Catalogued Locally"
+  };
+  const custom = [item, ...getLocalCustomEntries()];
+  localStorage.setItem("archive_signal.custom.v2", JSON.stringify(custom));
+  closeSubmitModal();
+  bootCatalog();
+}
+
+function exportCatalogJson() {
+  const payload = {
+    schema_version: "1.1.0",
+    archive_name: "Archive Signal",
+    tagline: "Every recording has a history. Archive Signal keeps it alive.",
+    era_focus: "1980s & 1990s",
+    curator: "Richard John Murray (JupiterIsland)",
+    entries
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "archive_signal_catalog.json";
+  a.click();
+}
+
+/* Signal Amber (#FFB000) vintage broadcast carrier oscilloscope */
+(function drawCarrier() {
+  const c = document.getElementById("signal-canvas");
+  if (!c) return;
+  const ctx = c.getContext("2d");
+  let t = 0;
+  function frame() {
+    const r = c.getBoundingClientRect();
+    if (c.width !== Math.floor(r.width)) { c.width = Math.max(180, Math.floor(r.width)); c.height = 32; }
+    ctx.fillStyle = "#09090a";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.strokeStyle = "rgba(255, 176, 0, 0.16)";
+    ctx.beginPath(); ctx.moveTo(0, 16); ctx.lineTo(c.width, 16); ctx.stroke();
+    ctx.strokeStyle = "#FFB000";
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    t += 0.055;
+    for (let x = 0; x < c.width; x++) {
+      const norm = x / c.width;
+      const env = Math.sin(norm * Math.PI);
+      const y = 16 + Math.sin(x * 0.085 + t) * 7.5 * env + Math.sin(x * 0.22 - t * 1.35) * 3.2 * env;
+      if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+bootCatalog();
+</script>
+</body>
+</html>
